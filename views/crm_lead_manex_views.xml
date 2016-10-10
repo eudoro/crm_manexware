@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<odoo>
+
+        <!--
+            crm.lead (as Opportunity) views
+        -->
+        <record id="crm_case_form_view_oppor_inherit" model="ir.ui.view">
+            <field name="name">crm.lead.form.opportunity.inherit</field>
+            <field name="model">crm.lead</field>
+            <field name="priority">20</field>
+            <field name="inherit_id" ref="crm.crm_case_form_view_oppor"></field>
+            <field name="arch" type="xml">
+                <xpath expr="//h2[@class='o_row']" position="after">
+                            <separator> -- </separator>
+                            <h2 class="o_row">
+                                <div>
+                                    <label for="planned_revenue_recurrent" class="oe_edit_only" />
+                                    <div class="o_row">
+                                        <field name="company_currency" invisible="1"/>
+                                        <field name="planned_revenue_recurrent" widget='monetary' options="{'currency_field': 'company_currency'}"/>
+                                        <span class="oe_grey"> at </span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="recurrent_months" class="oe_edit_only"/>
+                                    <div class="o_row">
+                                        <field name="recurrent_months" widget="integer"/>
+                                        <span>mes</span>
+                                    </div>
+                                </div>
+                            </h2>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="crm_case_tree_view_oppor_inherit" model="ir.ui.view">
+            <field name="name">crm.lead.tree.opportunity.inherit</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_tree_view_oppor"></field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='probability']" position="after">
+                    <field name="planned_revenue_recurrent" sum="Expected Revenues Recurrent"/>
+                    <field name="recurrent_months" avg="Recurrent_months"/>
+                </xpath>
+            </field>
+        </record>
+
+
+
+</odoo>
