@@ -25,7 +25,7 @@
                                     <label for="recurrent_months" class="oe_edit_only"/>
                                     <div class="o_row">
                                         <field name="recurrent_months" widget="integer"/>
-                                        <span>mes</span>
+                                        <span>month</span>
                                     </div>
                                 </div>
                             </h2>
